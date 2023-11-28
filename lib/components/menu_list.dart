@@ -19,7 +19,7 @@ class MenuList extends StatelessWidget {
       child: TextButton(
         style: TextButton.styleFrom(
           primary: Colors.grey[600],
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.all(16),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
           backgroundColor: Color(0xFFF5F6F9),

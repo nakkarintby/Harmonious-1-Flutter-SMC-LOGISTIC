@@ -15,12 +15,12 @@ import 'package:test/class/resvalidateimage.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 
-class AfterPage extends StatefulWidget {
+class SecurityGRPage extends StatefulWidget {
   @override
-  _AfterPageState createState() => _AfterPageState();
+  _SecurityGRPageState createState() => _SecurityGRPageState();
 }
 
-class _AfterPageState extends State<AfterPage> {
+class _SecurityGRPageState extends State<SecurityGRPage> {
   TextEditingController documentController = TextEditingController();
   bool documentVisible = false;
   bool documentReadonly = false;
@@ -39,7 +39,7 @@ class _AfterPageState extends State<AfterPage> {
   bool documentWillUploadOrWillFinish = false;
   bool documentWillFinish = false;
 
-  int isUsername = 0;
+  String isUsername = "";
   String username = "";
 
   int step = 0;
@@ -335,7 +335,7 @@ class _AfterPageState extends State<AfterPage> {
   Future<void> documentIDCheck() async {
     setState(() {
       documentIdInput = documentController.text;
-      eventType = 'After';
+      eventType = 'Security';
     });
 
     var url = Uri.parse(configs +
@@ -346,7 +346,7 @@ class _AfterPageState extends State<AfterPage> {
     http.Response response = await http.get(url);
 
     if (response.statusCode != 200) {
-      showErrorDialog('Error Http Requests documentIDCheck After');
+      showErrorDialog('Error Http Requests documentIDCheck Security');
       return;
     }
 
@@ -488,7 +488,7 @@ class _AfterPageState extends State<AfterPage> {
     final headers = {'Content-Type': 'application/json'};
     var jsonBody = jsonEncode(imagePic);
     final encoding = Encoding.getByName('utf-8');
-    print("call post api upload image after");
+    print("call post api upload image security");
     http.Response response = await http.post(
       uri,
       headers: headers,
@@ -498,11 +498,12 @@ class _AfterPageState extends State<AfterPage> {
 
     if (response.statusCode != 200) {
       await showProgressLoading(true);
-      showErrorDialog('Error Http Requests upload1 After');
+      showErrorDialog('Error Http Requests upload1 Security');
       return;
     }
 
-    print("success call post api upload image after");
+    print("success call post api upload image security");
+
     var data = json.decode(response.body);
 
     //check can upload?
@@ -511,16 +512,16 @@ class _AfterPageState extends State<AfterPage> {
         documentIdInput +
         '/' +
         eventType);
-    print("call get api check upload image after");
+    print("call get api check upload image security");
     http.Response response2 = await http.get(url2);
 
     if (response.statusCode != 200) {
       await showProgressLoading(true);
-      showErrorDialog('Error Http Requests upload2 After');
+      showErrorDialog('Error Http Requests upload2 Security');
       return;
     }
 
-    print("success call get api check upload image after");
+    print("success call get api check upload image security");
 
     var data2 = json.decode(response2.body);
     setState(() {
@@ -580,7 +581,7 @@ class _AfterPageState extends State<AfterPage> {
     setColor();
     setText();
     setFocus();
-    showProgressLoading(true);
+    await showProgressLoading(true);
   }
 
   Future<void> finish() async {
@@ -592,7 +593,7 @@ class _AfterPageState extends State<AfterPage> {
     setState(() {
       //resultDocument!.documentStatus = "In Progress";
       resultDocument!.modifiedBy = username;
-      resultDocument!.flagImgAfter = true;
+      resultDocument!.flagImgSecurity = true;
     });
     String tempAPI = configs + '/api/api/document/updatemobile';
     final uri = Uri.parse(tempAPI);
@@ -609,7 +610,7 @@ class _AfterPageState extends State<AfterPage> {
 
     if (response.statusCode != 200) {
       await showProgressLoading(true);
-      showErrorDialog('Error Http Requests finish After');
+      showErrorDialog('Error Http Requests finish Security');
       return;
     }
 
@@ -662,7 +663,7 @@ class _AfterPageState extends State<AfterPage> {
           leading: BackButton(color: Colors.black),
           backgroundColor: Colors.white,
           title: Text(
-            'After',
+            'Security GR',
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(color: Colors.black, fontSize: 18),

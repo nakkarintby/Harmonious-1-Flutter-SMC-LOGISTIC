@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:test/components/menu_list.dart';
-import 'package:test/screens/after.dart';
-import 'package:test/screens/before.dart';
-import 'package:test/screens/security.dart';
+import 'package:test/screens/afterGI.dart';
+import 'package:test/screens/beforeGI.dart';
+import 'package:test/screens/securityGI.dart';
+import 'package:test/screens/securityGR.dart';
 
-class MenuTakePhoto extends StatelessWidget {
+import 'afterGR.dart';
+import 'beforeGR.dart';
+
+class MenuTakePhotoGR extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,7 +16,7 @@ class MenuTakePhoto extends StatelessWidget {
           leading: BackButton(color: Colors.black),
           backgroundColor: Colors.white,
           title: Text(
-            'Take Photo',
+            'Take Photo GR',
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(color: Colors.black, fontSize: 20),
@@ -40,7 +44,7 @@ class MenuTakePhoto extends StatelessWidget {
                 ),
                 press: () => {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => BeforePage()))
+                      MaterialPageRoute(builder: (context) => BeforeGRPage()))
                 },
               ),
               MenuList(
@@ -52,7 +56,7 @@ class MenuTakePhoto extends StatelessWidget {
                 ),
                 press: () => {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AfterPage()))
+                      MaterialPageRoute(builder: (context) => AfterGRPage()))
                 },
               ),
               MenuList(
@@ -64,7 +68,7 @@ class MenuTakePhoto extends StatelessWidget {
                 ),
                 press: () => {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SecurityPage()))
+                      MaterialPageRoute(builder: (context) => SecurityGRPage()))
                 },
               ),
             ],

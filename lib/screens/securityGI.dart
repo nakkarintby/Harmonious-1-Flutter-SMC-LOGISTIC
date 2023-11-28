@@ -15,12 +15,12 @@ import 'package:test/class/resvalidateimage.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 
-class SecurityPage extends StatefulWidget {
+class SecurityGIPage extends StatefulWidget {
   @override
-  _SecurityPageState createState() => _SecurityPageState();
+  _SecurityGIPageState createState() => _SecurityGIPageState();
 }
 
-class _SecurityPageState extends State<SecurityPage> {
+class _SecurityGIPageState extends State<SecurityGIPage> {
   TextEditingController documentController = TextEditingController();
   bool documentVisible = false;
   bool documentReadonly = false;
@@ -39,7 +39,7 @@ class _SecurityPageState extends State<SecurityPage> {
   bool documentWillUploadOrWillFinish = false;
   bool documentWillFinish = false;
 
-  int isUsername = 0;
+  String isUsername = "";
   String username = "";
 
   int step = 0;
@@ -663,7 +663,7 @@ class _SecurityPageState extends State<SecurityPage> {
           leading: BackButton(color: Colors.black),
           backgroundColor: Colors.white,
           title: Text(
-            'Security',
+            'Security GI',
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(color: Colors.black, fontSize: 18),

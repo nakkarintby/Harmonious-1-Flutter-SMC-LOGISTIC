@@ -85,7 +85,7 @@ class _ReGoodIssueState extends State<ReGoodIssue> {
   late Palletitem? resultPalletitem;
   late List<Palletitem?> listHistoryPalletitem;
 
-  int isUsername = 0;
+  String isUsername = "";
   String username = "";
   late List<FocusNode> focusNodes = List.generate(5, (index) => FocusNode());
   late Timer timer;

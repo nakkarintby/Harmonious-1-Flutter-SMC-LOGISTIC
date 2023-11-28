@@ -3,10 +3,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:test/components/menu_list.dart';
 import 'package:test/screens/menu_gi.dart';
 import 'package:test/screens/menu_gr.dart';
-import 'package:test/screens/menu_takephoto.dart';
+import 'package:test/screens/menu_takephotoGI.dart';
 import 'package:test/screens/menu_transfer.dart';
 import 'package:test/screens/stock_overview.dart';
-import 'package:test/screens/before.dart';
+import 'package:test/screens/beforeGI.dart';
+
+import 'menu_takephotoGR.dart';
 
 class Menu extends StatefulWidget {
   @override
@@ -18,7 +20,8 @@ class _MenuPageState extends State<Menu> {
   bool giVisible = false;
   bool transferVisible = false;
   bool stockVisible = false;
-  bool takephotoVisible = false;
+  bool takephotoGRVisible = false;
+  bool takephotoGIVisible = false;
   String showMenu = '';
 
   @override
@@ -38,7 +41,8 @@ class _MenuPageState extends State<Menu> {
         giVisible = true;
         transferVisible = true;
         stockVisible = true;
-        takephotoVisible = true;
+        takephotoGRVisible = true;
+        takephotoGIVisible = true;
       });
     } else {
       setState(() {
@@ -46,7 +50,8 @@ class _MenuPageState extends State<Menu> {
         giVisible = false;
         transferVisible = false;
         stockVisible = false;
-        takephotoVisible = true;
+        takephotoGRVisible = true;
+        takephotoGIVisible = true;
       });
     }
   }
@@ -68,7 +73,7 @@ class _MenuPageState extends State<Menu> {
           padding: EdgeInsets.symmetric(vertical: 50),
           child: Column(
             children: [
-              SizedBox(height: 10),
+              SizedBox(height: 2),
               Visibility(
                 visible: grVisible,
                 child: MenuList(
@@ -132,9 +137,9 @@ class _MenuPageState extends State<Menu> {
                 ),
               ),
               Visibility(
-                visible: takephotoVisible,
+                visible: takephotoGRVisible,
                 child: MenuList(
-                  text: "Take Photo",
+                  text: "Take Photo GR",
                   icon: Icon(
                     Icons.camera_alt_rounded,
                     size: 40,
@@ -144,7 +149,24 @@ class _MenuPageState extends State<Menu> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => MenuTakePhoto()))
+                            builder: (context) => MenuTakePhotoGR()))
+                  },
+                ),
+              ),
+              Visibility(
+                visible: takephotoGIVisible,
+                child: MenuList(
+                  text: "Take Photo GI",
+                  icon: Icon(
+                    Icons.camera_alt_rounded,
+                    size: 40,
+                    color: Colors.blue,
+                  ),
+                  press: () => {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MenuTakePhotoGI()))
                   },
                 ),
               ),

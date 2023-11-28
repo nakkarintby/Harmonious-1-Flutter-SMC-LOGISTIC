@@ -84,7 +84,7 @@ class _DamageState extends State<Damage> {
   late Palletitem? resultPalletitem;
   late List<Palletitem?> listPalletitem = [];
 
-  int isUsername = 0;
+  String isUsername = "";
   String username = "";
   late List<FocusNode> focusNodes = List.generate(6, (index) => FocusNode());
   late Timer timer;

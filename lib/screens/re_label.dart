@@ -79,7 +79,7 @@ class _ReLabelState extends State<ReLabel> {
   late Palletitem? resultPalletitem;
   late List<Palletitem?> listPalletitem = [];
 
-  int isUsername = 0;
+  String isUsername = "";
   String username = "";
   late List<FocusNode> focusNodes = List.generate(8, (index) => FocusNode());
   late Timer timer;

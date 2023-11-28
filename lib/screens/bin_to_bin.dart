@@ -73,7 +73,7 @@ class _BinToBinState extends State<BinToBin> {
   late Palletitem? resultPalletitem;
   late List<Palletitem?> listPalletitem = [];
 
-  int isUsername = 0;
+  String isUsername = "";
   String username = "";
   late List<FocusNode> focusNodes = List.generate(7, (index) => FocusNode());
   late Timer timer;
