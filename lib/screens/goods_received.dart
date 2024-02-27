@@ -756,7 +756,6 @@ class _GoodReceivedState extends State<GoodReceived> {
           ((resultPalletitem!.isDeleted == false &&
                   resultPalletitem!.isPosted == false) &&
               temp6 == true)) {
-        if (resultDocument!.documentStatus == "Created") {
           if (siloTemp) {
             setState(() {
               resultDocument!.documentStatus = "Scan Completed";
@@ -791,7 +790,7 @@ class _GoodReceivedState extends State<GoodReceived> {
           setState(() {
             resultDocument = Document.fromJson(data3);
           });
-        }
+        
 
         bool? temp7 = resultDocument?.silo;
         bool siloTemp2 = temp7!;

@@ -52,7 +52,7 @@ class Background_Login extends StatelessWidget {
             right: MediaQuery.of(context).size.width / 80,
             child: ElevatedButton(
               onPressed: () {},
-              child: Text('V2.5'),
+              child: Text('V2.6'),
               style: ElevatedButton.styleFrom(
                 primary: Colors.red[400], //
                 shape: CircleBorder(),
