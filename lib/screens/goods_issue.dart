@@ -166,9 +166,9 @@ class _GoodIssueState extends State<GoodIssue> {
   }
 
   Future<void> getSession() async {
-    isUsername = await FlutterSession().get("token_username");
+    var isUsername = 'asdfdsaf1212';
     setState(() {
-      username = isUsername.toString();
+      username = "$isUsername";
     });
   }
 

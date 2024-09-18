@@ -171,7 +171,7 @@ class _LoginState extends State<Login> {
     bool checkshowMenuoPrefs = prefs.containsKey('showMenu');
 
     setState(() {
-      version = '2.6';
+      version = '2.7';
     });
     if ((checkConfigsPrefs && checkQualityPrefs) && checkshowMenuoPrefs) {
       setState(() {
