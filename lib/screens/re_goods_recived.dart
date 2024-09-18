@@ -85,7 +85,6 @@ class _ReGoodReceivedState extends State<ReGoodReceived> {
   late Palletitem? resultPalletitem;
   late List<Palletitem?> listHistoryPalletitem;
 
-  String isUsername = "";
   String username = "";
   late List<FocusNode> focusNodes = List.generate(5, (index) => FocusNode());
   late Timer timer;
@@ -166,9 +165,9 @@ class _ReGoodReceivedState extends State<ReGoodReceived> {
   }
 
   Future<void> getSession() async {
-    isUsername = await FlutterSession().get("token_username");
+    var isUsername = await FlutterSession().get("token_username");
     setState(() {
-      username = isUsername.toString();
+      username = "$isUsername";
     });
   }
 

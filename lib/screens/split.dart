@@ -76,7 +76,6 @@ class _SplitState extends State<Split> {
   late List<Palletitem?> listPalletitem = [];
   late List<DocumentItem?> listDocumentitem = [];
 
-  String isUsername = "";
   String username = "";
   late List<FocusNode> focusNodes = List.generate(5, (index) => FocusNode());
   late Timer timer;
@@ -157,9 +156,9 @@ class _SplitState extends State<Split> {
   }
 
   Future<void> getSession() async {
-    isUsername = await FlutterSession().get("token_username");
+    var isUsername = await FlutterSession().get("token_username");
     setState(() {
-      username = isUsername.toString();
+      username = "$isUsername";
     });
   }
 

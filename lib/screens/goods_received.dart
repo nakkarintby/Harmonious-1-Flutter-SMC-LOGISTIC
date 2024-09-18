@@ -87,7 +87,6 @@ class _GoodReceivedState extends State<GoodReceived> {
   late Palletitem? resultPalletitem;
   late List<Palletitem?> listHistoryPalletitem;
 
-  String isUsername = "";
   String username = "";
   late List<FocusNode> focusNodes = List.generate(5, (index) => FocusNode());
   late Timer timer;
@@ -169,9 +168,9 @@ class _GoodReceivedState extends State<GoodReceived> {
   }
 
   Future<void> getSession() async {
-    isUsername = await FlutterSession().get("token_username");
+    var isUsername = await FlutterSession().get("token_username");
     setState(() {
-      username = isUsername.toString();
+      username = "$isUsername";
     });
   }
 
@@ -756,41 +755,40 @@ class _GoodReceivedState extends State<GoodReceived> {
           ((resultPalletitem!.isDeleted == false &&
                   resultPalletitem!.isPosted == false) &&
               temp6 == true)) {
-          if (siloTemp) {
-            setState(() {
-              resultDocument!.documentStatus = "Scan Completed";
-            });
-          } else {
-            setState(() {
-              resultDocument!.documentStatus = "In Progress";
-            });
-          }
-
-          tempAPI = configs + '/api/api/document/updatemobile';
-          final uri3 = Uri.parse(tempAPI);
-          final headers3 = {'Content-Type': 'application/json'};
-          var jsonBody3 = jsonEncode(resultDocument?.toJson());
-          final encoding3 = Encoding.getByName('utf-8');
-          print("call post api update document when first post");
-          http.Response response3 = await http.post(
-            uri3,
-            headers: headers3,
-            body: jsonBody3,
-            encoding: encoding3,
-          );
-
-          if (response.statusCode != 200) {
-            await showProgressLoading(true);
-            showErrorDialog('Error Http Requests submitGR3 GR');
-            return;
-          }
-
-          print("success call post api update document when first post");
-          var data3 = json.decode(response3.body);
+        if (siloTemp) {
           setState(() {
-            resultDocument = Document.fromJson(data3);
+            resultDocument!.documentStatus = "Scan Completed";
           });
-        
+        } else {
+          setState(() {
+            resultDocument!.documentStatus = "In Progress";
+          });
+        }
+
+        tempAPI = configs + '/api/api/document/updatemobile';
+        final uri3 = Uri.parse(tempAPI);
+        final headers3 = {'Content-Type': 'application/json'};
+        var jsonBody3 = jsonEncode(resultDocument?.toJson());
+        final encoding3 = Encoding.getByName('utf-8');
+        print("call post api update document when first post");
+        http.Response response3 = await http.post(
+          uri3,
+          headers: headers3,
+          body: jsonBody3,
+          encoding: encoding3,
+        );
+
+        if (response.statusCode != 200) {
+          await showProgressLoading(true);
+          showErrorDialog('Error Http Requests submitGR3 GR');
+          return;
+        }
+
+        print("success call post api update document when first post");
+        var data3 = json.decode(response3.body);
+        setState(() {
+          resultDocument = Document.fromJson(data3);
+        });
 
         bool? temp7 = resultDocument?.silo;
         bool siloTemp2 = temp7!;

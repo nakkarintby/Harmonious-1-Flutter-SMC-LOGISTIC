@@ -85,7 +85,7 @@ class _GoodIssueState extends State<GoodIssue> {
   late Palletitem? resultPalletitem;
   late List<Palletitem?> listHistoryPalletitem;
 
-  String isUsername = "";
+
   String username = "";
   late List<FocusNode> focusNodes = List.generate(5, (index) => FocusNode());
   late Timer timer;
@@ -166,7 +166,7 @@ class _GoodIssueState extends State<GoodIssue> {
   }
 
   Future<void> getSession() async {
-    var isUsername = 'asdfdsaf1212';
+    var isUsername = await FlutterSession().get("token_username");
     setState(() {
       username = "$isUsername";
     });

@@ -84,7 +84,6 @@ class _DamageState extends State<Damage> {
   late Palletitem? resultPalletitem;
   late List<Palletitem?> listPalletitem = [];
 
-  String isUsername = "";
   String username = "";
   late List<FocusNode> focusNodes = List.generate(6, (index) => FocusNode());
   late Timer timer;
@@ -165,9 +164,9 @@ class _DamageState extends State<Damage> {
   }
 
   Future<void> getSession() async {
-    isUsername = await FlutterSession().get("token_username");
+    var isUsername = await FlutterSession().get("token_username");
     setState(() {
-      username = isUsername.toString();
+      username = "$isUsername";
     });
   }
 

@@ -40,7 +40,6 @@ class _BeforeGIPageState extends State<BeforeGIPage> {
   bool documentWillUploadOrWillFinish = false;
   bool documentWillFinish = false;
 
-  String isUsername = "";
   String username = "";
 
   int step = 0;
@@ -113,9 +112,9 @@ class _BeforeGIPageState extends State<BeforeGIPage> {
   }
 
   Future<void> getSession() async {
-    isUsername = await FlutterSession().get("token_username");
+    var isUsername = await FlutterSession().get("token_username");
     setState(() {
-      username = isUsername.toString();
+      username = "$isUsername";
     });
   }
 
